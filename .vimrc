@@ -18,6 +18,8 @@ Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'wting/rust.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -25,7 +27,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'nathanaelkane/vim-indent-guides'
-
+Plugin 'kien/ctrlp.vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'rhysd/vim-crystal'
+Plugin 'wakatime/vim-wakatime'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -52,13 +58,30 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+set ts=4 sw=4 et
+let g:indent_guides_start_level=2
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
 set mouse=a
 set number
 set t_Co=256
 set background=dark
+"set background=light
 set laststatus=2
+"colorscheme Tomorrow
+"colorscheme lucius
+"colorscheme pencil
 colorscheme PaperColor
+"colorscheme hemisu
+let g:pencil_higher_contrast_ui = 0   " 0=low (def), 1=high
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=4
 
 function! GoMetaLinter() abort
 	silent cexpr system("gometalinter ".expand("%"))
